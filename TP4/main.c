@@ -12,7 +12,7 @@ void InitTimer1(){
 	//Prescaler en 256
 	//Modo NO invertido
 	TCCR1A |= (1 << WGM10) | (1<< COM1A1) | (1<< COM1B1);
-	TCCR1B |= (1 << WGM12) | (1 << CS12);
+	TCCR1B |= (1 << WGM12) | (1 << CS12) | (1 << CS10);
 	
 	OCR1A = 0;
 	OCR1B = 0;
@@ -21,14 +21,19 @@ void InitTimer1(){
 void InitTimer0(){
 	// Interrupcion cada 1ms
 	TCCR0A |= (1 << WGM01);
-	TCCR0B |= (1 << CS02);
+	TCCR0B |= (1 << CS01) | (1 << CS00);  // prescaler 64
 	TIMSK0 |= (1 << OCIE0A);
 	
-	OCR0A = 62;
+	OCR0A = 249;
 }
 
-ISR(TIMER1_COMPA_vect){
-	PORTB ^= (1<<PORTB4);
+uint8_t counter = 0;
+ISR(TIMER0_COMPA_vect){
+	
+	if(++counter == 500){
+		PORTB ^= (1<<PORTB4);
+		counter = 0;
+	}
 }
 
 int main(void)
@@ -38,17 +43,19 @@ int main(void)
 	
 	InitTimer1();
 	InitTimer0();
+	
 	DDRB |= (1<<PORTB1) | (1<<PORTB2) | (1<<PORTB5);
 	PORTB |= (1 << PINB5);
 	
 	//Test
 	DDRB |= (1<<PORTB4);
-	PORTB &= ~(1<<PORTB4);
-	//
+	PORTB |= (1<<PORTB4);
+	//PORTB &= ~(1<<PORTB4);
 	
+	sei();
     while (1)
     {
-		OCR1A += 1;
+		//OCR1A += 1;
 		//PORTB ^= (1 << PORTB1);
 		//_delay_ms(100);
     }
