@@ -30,7 +30,7 @@ int main(void)
     while(1)
     {
 		sEOS_Dispatch_Tasks();
-		//sEOS_Go_To_Sleep();
+		sEOS_Go_To_Sleep();
     }
 }
 

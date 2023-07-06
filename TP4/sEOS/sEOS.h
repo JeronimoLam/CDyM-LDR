@@ -2,6 +2,7 @@
 #define SEOS_H_
 	#include <avr/io.h>
 	#include <stdio.h>
+	#include <avr/sleep.h>
 	#include "../Leds/led.h"
 	#include "../MEF/MEF.h"
 
