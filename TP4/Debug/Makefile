@@ -34,6 +34,7 @@ LINKER_SCRIPT_DEP:=
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
 ../Leds \
+../MEF \
 ../sEOS \
 ../Timers
 
@@ -42,6 +43,7 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../Leds/led.c \
 ../main.c \
+../MEF/MEF.c \
 ../sEOS/sEOS.c \
 ../Timers/timer0.c \
 ../Timers/timer1.c
@@ -56,6 +58,7 @@ ASM_SRCS +=
 OBJS +=  \
 Leds/led.o \
 main.o \
+MEF/MEF.o \
 sEOS/sEOS.o \
 Timers/timer0.o \
 Timers/timer1.o
@@ -63,6 +66,7 @@ Timers/timer1.o
 OBJS_AS_ARGS +=  \
 Leds/led.o \
 main.o \
+MEF/MEF.o \
 sEOS/sEOS.o \
 Timers/timer0.o \
 Timers/timer1.o
@@ -70,6 +74,7 @@ Timers/timer1.o
 C_DEPS +=  \
 Leds/led.d \
 main.d \
+MEF/MEF.d \
 sEOS/sEOS.d \
 Timers/timer0.d \
 Timers/timer1.d
@@ -77,6 +82,7 @@ Timers/timer1.d
 C_DEPS_AS_ARGS +=  \
 Leds/led.d \
 main.d \
+MEF/MEF.d \
 sEOS/sEOS.d \
 Timers/timer0.d \
 Timers/timer1.d
@@ -103,6 +109,13 @@ Leds/led.o: ../Leds/led.c
 	
 
 ./main.o: .././main.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MEF/MEF.o: ../MEF/MEF.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

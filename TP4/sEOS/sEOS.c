@@ -9,7 +9,7 @@ static volatile uint8_t FLAG_MEF = 0;
 
 void sEOS_Dispatch_Tasks(){
 	if(FLAG_MEF){
-		PORTB ^= (1<<PORTB4);
+		MEF_Update();
 		FLAG_MEF = 0;	
 	}
 	// Actualiza la MEF cada 50ms
