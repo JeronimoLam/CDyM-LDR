@@ -1,6 +1,5 @@
 #include "timers.h"
-
-volatile uint16_t counter = 0;
+#include "../sEOS/sEOS.h"
 
 void TIMERS_InitTimer0(){
 	// Interrupcion cada 1ms
@@ -10,27 +9,7 @@ void TIMERS_InitTimer0(){
 	
 	OCR0A = 249;
 }
-
+static volatile uint16_t counter = 499;
 ISR(TIMER0_COMPA_vect){
-	if(++counter == 50){
-		counter = 0;
-	}
+	sEOS_SCH_Tasks();
 }
-
-/*
-if (counter  < 500){
-	counter++;
-}
-if (counter % 50 == 0){
-	setBlue(blue + (MAX_B/10)); //Al valor del led actual se le suma 1/10 del total
-	setGreen(green + MAX_G/10);
-}
-if(counter == 500){
-	setBlue(255);
-	setGreen(255);
-	PORTB ^= (1<<PORTB4);
-	counter = 0;
-	_delay_ms(1000);
-}
-
-*/

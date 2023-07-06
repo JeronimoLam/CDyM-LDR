@@ -56,10 +56,33 @@ void LEDS_setFinalBlue(uint8_t value){
 	final_blue = value;
 }
 
+uint8_t LEDS_getFinalRed(){
+	return final_red;
+}
+
+uint8_t LEDS_getFinalGreen(){
+	return final_green;
+}
+
+uint8_t LEDS_getFinalBlue(){
+	return final_blue;
+}
+
 void LEDS_setFinalRGB(uint8_t valueR, uint8_t valueG, uint8_t valueB){
 	final_red = valueR;
 	final_green = valueG;
 	final_blue = valueB;
 }
 
+void LEDS_incrementRed(uint8_t value){
+	red += value;
+}
+
+void LEDS_incrementGreen(uint8_t value){
+	green += value;
+}
+
+void LEDS_incrementBlue(uint8_t value){
+	blue += value;
+}
 
