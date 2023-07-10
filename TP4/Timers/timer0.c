@@ -9,7 +9,7 @@ void TIMERS_InitTimer0(){
 	
 	OCR0A = 249;
 }
-static volatile uint16_t counter = 499;
+
 ISR(TIMER0_COMPA_vect){
 	sEOS_SCH_Tasks();
 }

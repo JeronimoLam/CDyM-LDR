@@ -6,7 +6,6 @@
 	#include "../Leds/led.h"
 	#include "../MEF/MEF.h"
 
-
 	void sEOS_Dispatch_Tasks();
 	void sEOS_Go_To_Sleep();
 	void sEOS_SCH_Tasks();

@@ -3,7 +3,7 @@
 //#include "../MEF/MEF.h"
 //#include "../MEF_Buttons/MEF_Buttons.h"
 
-static volatile uint16_t counter = 499;
+static volatile uint16_t counter = 49;
 static volatile uint8_t FLAG_MEF = 0;
 
 
@@ -40,7 +40,7 @@ void sEOS_Dispatch_Tasks(){
 
 void sEOS_SCH_Tasks(){
 	//Cada 50 ms pone el flag en 1
-	if (++counter == 500) {
+	if (++counter == 50) {
 		FLAG_MEF = 1;
 		counter = 0;
 	}

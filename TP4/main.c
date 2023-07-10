@@ -5,11 +5,8 @@
 #include "Timers/timers.h"
 #include "Leds/led.h"
 #include "sEOS/sEOS.h"
+#include "MEF/MEF.h"
 
-/*
-typedef enum {RAISING, ON, FALLING, OFF}phases;
-phases estado;
-*/
 
 int main(void)
 {
@@ -18,8 +15,8 @@ int main(void)
 	TIMERS_InitTimer1();
 	
 	LEDS_init();
-	
-	LEDS_setFinalRGB(100, 130, 200);
+	MEF_init();
+	LEDS_setFinalRGB(0, 255, 255);
 	
 	//Test PB4 como salida y un 1 en la misma
 	DDRB |= (1 << PORTB4);
