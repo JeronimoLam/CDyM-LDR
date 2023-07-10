@@ -16,7 +16,7 @@ int main(void)
 	
 	LEDS_init();
 	MEF_init();
-	LEDS_setFinalRGB(0, 255, 255);
+	LEDS_setFinalRGB(0, 10, 200);
 	
 	//Test PB4 como salida y un 1 en la misma
 	DDRB |= (1 << PORTB4);

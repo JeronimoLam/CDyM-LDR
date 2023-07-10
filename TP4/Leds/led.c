@@ -107,16 +107,16 @@ void LEDS_setFinalRGB(uint8_t valueR, uint8_t valueG, uint8_t valueB){
 }
 
 void LEDS_incrementRed(uint16_t value){
-	LEDS_setRed(LEDS_getRed() + red_increments[value - 1]);
+	LEDS_setRed(LEDS_getRed() + red_increments[value]);
 }
 
 void LEDS_incrementGreen(uint16_t value){
-	LEDS_setGreen(LEDS_getGreen() + green_increments[value - 1]);
+	LEDS_setGreen(LEDS_getGreen() + green_increments[value]);
 	
 }
 
 void LEDS_incrementBlue(uint16_t value){
-	LEDS_setBlue(LEDS_getBlue() + blue_increments[value - 1]);
+	LEDS_setBlue(LEDS_getBlue() + blue_increments[value]);
 }
 
 void LEDS_decrementRed(uint16_t value){

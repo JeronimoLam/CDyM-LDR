@@ -29,13 +29,10 @@ void MEF_Update(){
 			
 		case RAISING:
 			PORTB |= (1<<PORTB4);
-
-			/*LEDS_setGreen(150);
-			LEDS_setBlue(150);*/
 			
-			if (LEDS_getFinalRed() != 0) LEDS_incrementRed(stateCount - 1);
-			if (LEDS_getFinalGreen() != 0) LEDS_incrementGreen(stateCount - 1);
-			if (LEDS_getFinalBlue() != 0) LEDS_incrementBlue(stateCount - 1);
+			LEDS_incrementRed(stateCount - 1);
+			LEDS_incrementGreen(stateCount - 1);
+			LEDS_incrementBlue(stateCount - 1);
 			
 			if(stateCount == 10){
 				state = ON;
