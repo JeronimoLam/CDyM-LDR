@@ -133,6 +133,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="LDR\LDR.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LDR\LDR.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Leds\led.c">
       <SubType>compile</SubType>
     </Compile>
@@ -167,6 +173,7 @@
   <ItemGroup>
     <Folder Include="Leds" />
     <Folder Include="MEF" />
+    <Folder Include="LDR" />
     <Folder Include="sEOS" />
     <Folder Include="Timers" />
   </ItemGroup>

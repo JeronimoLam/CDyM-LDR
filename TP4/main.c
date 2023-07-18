@@ -6,6 +6,7 @@
 #include "Leds/led.h"
 #include "sEOS/sEOS.h"
 #include "MEF/MEF.h"
+#include "LDR/LDR.h"
 
 
 int main(void)
@@ -16,7 +17,9 @@ int main(void)
 	
 	LEDS_init();
 	MEF_init();
-	LEDS_setFinalRGB(0, 10, 200);
+	LEDS_setFinalRGB(0, 255, 255);
+	
+	LDR_config();
 	
 	//Test PB4 como salida y un 1 en la misma
 	DDRB |= (1 << PORTB4);

@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+LDR\LDR.c
+
 Leds\led.c
 
 main.c

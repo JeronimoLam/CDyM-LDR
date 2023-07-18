@@ -21,6 +21,7 @@ void MEF_Update(){
 			LEDS_setGreen(0);
 			LEDS_setBlue(0);
 			
+			//timeOff = (LDR_get_value() > 200) ? 100 : 40;
 			if(stateCount == timeOff){
 				state = RAISING;
 				stateCount = 0;
