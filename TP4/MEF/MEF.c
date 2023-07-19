@@ -4,10 +4,15 @@ typedef enum {RAISING, ON, FALLING, OFF}states;
 static states state;
 static uint16_t stateCount;
 static uint16_t timeOff = 20;
+static double pendiente;
+static uint16_t desplazamiento;
 
 void MEF_init(){
 	state = OFF;
 	stateCount = 0;
+
+	pendiente = (40-100) / (MIN_SUP_LDR - MAX_INF_LDR);
+	desplazamiento = 100 + round(pendiente * MAX_INF_LDR);
 }
 
 void  update_timeOff(){
@@ -22,7 +27,7 @@ void  update_timeOff(){
 		timeOff = 40;
 	}
 	else {
-		timeOff = 100 - trunc((LDR_value * 40) / MIN_SUP_LDR); // Regla de tres
+		timeOff = desplazamiento - round(pendiente*LDR_value); // Parte de la recta con pendiente m negativa
 	}
 }
 
