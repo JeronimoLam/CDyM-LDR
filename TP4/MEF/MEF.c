@@ -10,7 +10,7 @@ void MEF_init(){
 	stateCount = 0;
 }
 
-void get_timeOff(){
+void  update_timeOff(){
 	uint16_t LDR_value = LDR_get_value();
 	
 	// Caso en el que Tparpadeo = 5seg (minima luz o menos)
@@ -22,8 +22,7 @@ void get_timeOff(){
 		timeOff = 40;
 	}
 	else {
-		timeOff = round((LDR_value * 40) / MIN_SUP_LDR); // Regla de tres
-		//timeOff
+		timeOff = 100 - trunc((LDR_value * 40) / MIN_SUP_LDR); // Regla de tres
 	}
 }
 
@@ -38,8 +37,8 @@ void MEF_Update(){
 			LEDS_setGreen(0);
 			LEDS_setBlue(0);
 			
-			timeOff = (LDR_get_value() > 200) ? 100 : 10;
-			if(stateCount == timeOff){
+			update_timeOff();
+			if(stateCount >= timeOff){
 				state = RAISING;
 				stateCount = 0;
 			}
