@@ -8,6 +8,7 @@
 #include "LDR.h"
 
 uint16_t result = 0;
+uint8_t is_converting = 0;
 
 void LDR_config(){
 	DIDR0= 0x01; //Digital Input Disable (opcional)
@@ -24,10 +25,18 @@ void LDR_Update(){
 	}
 }
 
+void LDR_Update(){
+	if (!is_converting){
+		ADCSRA |= (1<<ADSC);//start conversion
+		is_converting = 1;
+	}
+	if ((ADCSRA&(1<<ADIF))==0) {//wait for conversion to finish
+		ADCSRA |= (1<<ADIF); //borrar flag
+		result = (uint16_t) ADC;
+		is_converting = 0;
+	}
+}
+
 uint16_t LDR_get_value(){
-	ADCSRA |= (1<<ADSC);//start conversion
-	while((ADCSRA&(1<<ADIF))==0);//wait for conversion to finish
-	ADCSRA |= (1<<ADIF); //borrar flag
-	result = (uint16_t) ADC;
 	return result;
 }
