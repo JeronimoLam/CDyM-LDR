@@ -17,13 +17,13 @@ void LDR_config(){
 	ADMUX |= (1<<REFS0);
 }
 
-void LDR_Update(){
+/*void LDR_Update(){
 	ADCSRA |= (1<<ADSC);//start conversion
 	if((ADCSRA&(1<<ADIF))==0) {//wait for conversion to finish
 		ADCSRA |= (1<<ADIF); //borrar flag
 		result = ADC;
 	}
-}
+}*/
 
 void LDR_Update(){
 	if (!is_converting){
