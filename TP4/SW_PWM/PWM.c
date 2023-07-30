@@ -5,13 +5,13 @@
 #define PWM_ON		PORTB |= (1<<PORTB5)
 #define PWM_START	DDRB |= (1<<PORTB5)
 
-static uint8_t PWM_DELTA;
+static uint8_t PWM_DELTA = 255;
+static uint16_t PWM_position = 0;
 
 void PWM_soft_Update(void){
-	static uint16_t PWM_position = 0;
 	if (++PWM_position >= PWM_PERIOD){
 		PWM_position = 0;
-		PWM_OFF;
+		PWM_ON;
 	}
 	else{
 		if (PWM_position < PWM_DELTA){
@@ -26,7 +26,6 @@ void PWM_soft_Update(void){
 void PWM_soft_init(){
 	PWM_START;
 	PWM_OFF;
-	PWM_DELTA = 1;
 }
 
 uint8_t PWM_get_comp_value(){

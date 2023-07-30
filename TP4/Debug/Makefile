@@ -36,12 +36,14 @@ SUBDIRS :=  \
 ../Leds \
 ../MEF \
 ../SW_PWM \
+../LDR \
 ../sEOS \
 ../Timers
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../LDR/LDR.c \
 ../Leds/led.c \
 ../main.c \
 ../MEF/MEF.c \
@@ -58,6 +60,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+LDR/LDR.o \
 Leds/led.o \
 main.o \
 MEF/MEF.o \
@@ -67,6 +70,7 @@ Timers/timer0.o \
 Timers/timer1.o
 
 OBJS_AS_ARGS +=  \
+LDR/LDR.o \
 Leds/led.o \
 main.o \
 MEF/MEF.o \
@@ -76,6 +80,7 @@ Timers/timer0.o \
 Timers/timer1.o
 
 C_DEPS +=  \
+LDR/LDR.d \
 Leds/led.d \
 main.d \
 MEF/MEF.d \
@@ -85,6 +90,7 @@ Timers/timer0.d \
 Timers/timer1.d
 
 C_DEPS_AS_ARGS +=  \
+LDR/LDR.d \
 Leds/led.d \
 main.d \
 MEF/MEF.d \
@@ -107,6 +113,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+LDR/LDR.o: ../LDR/LDR.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "D:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 Leds/led.o: ../Leds/led.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0

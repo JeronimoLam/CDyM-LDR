@@ -48,8 +48,7 @@ void distributeValues(uint8_t inputR, uint8_t inputG, uint8_t inputB) {
 }
 
 void LEDS_setRed(uint8_t value){
-	//AGREGAR SETEO DEL LIMITE
-	
+	PWM_set_comp_value(value);
 	red = value;
 }
 

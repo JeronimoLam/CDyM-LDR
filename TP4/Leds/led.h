@@ -2,6 +2,7 @@
 #define LED_H_
 
 	#include <avr/io.h>
+	#include "../SW_PWM/PWM.h"
 	
 	void LEDS_init();
 	

@@ -7,6 +7,7 @@
 #include "sEOS/sEOS.h"
 #include "MEF/MEF.h"
 #include "SW_PWM/PWM.h"
+#include "LDR/LDR.h"
 
 
 int main(void)
@@ -17,7 +18,9 @@ int main(void)
 	
 	LEDS_init();
 	MEF_init();
-	LEDS_setFinalRGB(0, 10, 200);
+	LEDS_setFinalRGB(204, 255, 229);
+	
+	LDR_config();
 	
 	PWM_soft_init();
 	

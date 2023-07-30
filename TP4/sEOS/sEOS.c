@@ -3,8 +3,11 @@
 //#include "../MEF/MEF.h"
 //#include "../MEF_Buttons/MEF_Buttons.h"
 
-static volatile uint16_t counter = 49;
+static volatile uint16_t counter_MEF = 49;
 static volatile uint8_t FLAG_MEF = 0;
+
+static volatile uint16_t counter_LDR = 8;
+static volatile uint8_t FLAG_LDR = 0;
 
 
 void sEOS_Dispatch_Tasks(){
@@ -12,13 +15,22 @@ void sEOS_Dispatch_Tasks(){
 		MEF_Update();
 		FLAG_MEF = 0;	
 	}
+	/*
+	else if (FLAG_LDR){
+		FLAG_LDR = 0;
+	}
+	*/
 }
 
 void sEOS_SCH_Tasks(){
 	//Cada 50 ms pone el flag en 1
-	if (++counter == 50) {
+	if (++counter_MEF == 781) {
 		FLAG_MEF = 1;
-		counter = 0;
+		counter_MEF = 0;
+	}
+	if (++counter_LDR == 10) {
+		FLAG_LDR = 1;
+		counter_LDR = 0;
 	}
 	PWM_soft_Update();
 }

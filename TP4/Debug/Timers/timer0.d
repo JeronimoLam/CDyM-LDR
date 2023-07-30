@@ -16,9 +16,12 @@ Timers/timer0.d Timers/timer0.o: ../Timers/timer0.c ../Timers/timers.h \
  d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sleep.h \
- ../Timers/../sEOS/../Leds/led.h ../Timers/../sEOS/../MEF/MEF.h \
- ../Timers/../sEOS/../MEF/../Leds/led.h ../Timers/../sEOS/../SW_PWM/PWM.h \
- d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h
+ ../Timers/../sEOS/../Leds/led.h \
+ ../Timers/../sEOS/../Leds/../SW_PWM/PWM.h \
+ d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
+ ../Timers/../sEOS/../MEF/MEF.h \
+ d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../Timers/../sEOS/../MEF/../Leds/led.h ../Timers/../sEOS/../SW_PWM/PWM.h
 
 ../Timers/timers.h:
 
@@ -58,10 +61,14 @@ d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../Timers/../sEOS/../Leds/led.h:
 
+../Timers/../sEOS/../Leds/../SW_PWM/PWM.h:
+
+d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
+
 ../Timers/../sEOS/../MEF/MEF.h:
+
+d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
 ../Timers/../sEOS/../MEF/../Leds/led.h:
 
 ../Timers/../sEOS/../SW_PWM/PWM.h:
-
-d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:

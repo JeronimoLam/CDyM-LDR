@@ -4,10 +4,31 @@ typedef enum {RAISING, ON, FALLING, OFF}states;
 static states state;
 static uint16_t stateCount;
 static uint16_t timeOff = 20;
+static double pendiente;
+static uint16_t desplazamiento;
 
 void MEF_init(){
 	state = OFF;
 	stateCount = 0;
+
+	pendiente = (40-100) / (MIN_SUP_LDR - MAX_INF_LDR);
+	desplazamiento = 100 + round(pendiente * MAX_INF_LDR);
+}
+
+void  update_timeOff(){
+	uint16_t LDR_value = LDR_get_value();
+	
+	// Caso en el que Tparpadeo = 5seg (minima luz o menos)
+	if (LDR_value < MAX_INF_LDR){
+		timeOff = 100;
+	}
+	// Caso en el que Tparepadeo = 2seg (luz ambiente o mas)
+	else if (LDR_value > MIN_SUP_LDR){
+		timeOff = 40;
+	}
+	else {
+		timeOff = desplazamiento - round(pendiente*LDR_value); // Parte de la recta con pendiente m negativa
+	}
 }
 
 void MEF_Update(){
@@ -21,7 +42,8 @@ void MEF_Update(){
 			LEDS_setGreen(0);
 			LEDS_setBlue(0);
 			
-			if(stateCount == timeOff){
+			update_timeOff();
+			if(stateCount >= timeOff){
 				state = RAISING;
 				stateCount = 0;
 			}
@@ -57,9 +79,9 @@ void MEF_Update(){
 		case FALLING:
 			PORTB |= (1<<PORTB4);
 			
-			if (LEDS_getFinalRed() != 0) LEDS_decrementRed(stateCount - 1);
-			if (LEDS_getFinalGreen() != 0) LEDS_decrementGreen(stateCount - 1);
-			if (LEDS_getFinalBlue() != 0) LEDS_decrementBlue(stateCount - 1);
+			LEDS_decrementRed(stateCount - 1);
+			LEDS_decrementGreen(stateCount - 1);
+			LEDS_decrementBlue(stateCount - 1);
 			
 			if(stateCount == 10){
 				state = OFF;
