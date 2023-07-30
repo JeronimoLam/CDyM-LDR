@@ -18,7 +18,8 @@ sEOS/sEOS.d sEOS/sEOS.o: ../sEOS/sEOS.c ../sEOS/sEOS.h \
  d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  ../sEOS/../MEF/MEF.h \
  d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../sEOS/../MEF/../Leds/led.h ../sEOS/../SW_PWM/PWM.h
+ ../sEOS/../MEF/../Leds/led.h ../sEOS/../MEF/../LDR/ldr.h \
+ ../sEOS/../SW_PWM/PWM.h
 
 ../sEOS/sEOS.h:
 
@@ -63,5 +64,7 @@ d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
 ../sEOS/../MEF/../Leds/led.h:
+
+../sEOS/../MEF/../LDR/ldr.h:
 
 ../sEOS/../SW_PWM/PWM.h:

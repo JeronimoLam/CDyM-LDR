@@ -3,6 +3,7 @@
 	#include <avr/io.h>
 	#include <math.h>
 	#include "../Leds/led.h"
+	#include "../LDR/ldr.h"
 	
 	#define MIN_INF_LDR 0	// Valor minimo tapando con el dedo
 	#define MAX_INF_LDR 40	// Valor maximo tapando con el dedo
