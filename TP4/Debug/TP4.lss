@@ -3,31 +3,31 @@ TP4.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000002  00800100  00000512  000005a6  2**0
+  0 .data         00000002  00800100  0000055a  000005ee  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000512  00000000  00000000  00000094  2**1
+  1 .text         0000055a  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000028  00800102  00800102  000005a8  2**0
+  2 .bss          0000002b  00800102  00800102  000005f0  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000005a8  2**0
+  3 .comment      00000030  00000000  00000000  000005f0  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000005d8  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000620  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000180  00000000  00000000  00000618  2**0
+  5 .debug_aranges 000001b8  00000000  00000000  00000660  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001171  00000000  00000000  00000798  2**0
+  6 .debug_info   0000129e  00000000  00000000  00000818  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000009ce  00000000  00000000  00001909  2**0
+  7 .debug_abbrev 00000a6d  00000000  00000000  00001ab6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000a73  00000000  00000000  000022d7  2**0
+  8 .debug_line   00000bbe  00000000  00000000  00002523  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000002f0  00000000  00000000  00002d4c  2**2
+  9 .debug_frame  00000344  00000000  00000000  000030e4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000006ab  00000000  00000000  0000303c  2**0
+ 10 .debug_str    00000710  00000000  00000000  00003428  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000004aa  00000000  00000000  000036e7  2**0
+ 11 .debug_loc    000004aa  00000000  00000000  00003b38  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000120  00000000  00000000  00003b91  2**0
+ 12 .debug_ranges 00000148  00000000  00000000  00003fe2  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -47,7 +47,7 @@ Disassembly of section .text:
   2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  38:	0c 94 58 02 	jmp	0x4b0	; 0x4b0 <__vector_14>
+  38:	0c 94 7c 02 	jmp	0x4f8	; 0x4f8 <__vector_14>
   3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
@@ -72,7 +72,7 @@ Disassembly of section .text:
   74:	11 e0       	ldi	r17, 0x01	; 1
   76:	a0 e0       	ldi	r26, 0x00	; 0
   78:	b1 e0       	ldi	r27, 0x01	; 1
-  7a:	e2 e1       	ldi	r30, 0x12	; 18
+  7a:	ea e5       	ldi	r30, 0x5A	; 90
   7c:	f5 e0       	ldi	r31, 0x05	; 5
   7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
   80:	05 90       	lpm	r0, Z+
@@ -91,11 +91,11 @@ Disassembly of section .text:
   92:	1d 92       	st	X+, r1
 
 00000094 <.do_clear_bss_start>:
-  94:	aa 32       	cpi	r26, 0x2A	; 42
+  94:	ad 32       	cpi	r26, 0x2D	; 45
   96:	b2 07       	cpc	r27, r18
   98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
   9a:	0e 94 5d 01 	call	0x2ba	; 0x2ba <main>
-  9e:	0c 94 87 02 	jmp	0x50e	; 0x50e <_exit>
+  9e:	0c 94 ab 02 	jmp	0x556	; 0x556 <_exit>
 
 000000a2 <__bad_interrupt>:
   a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -428,9 +428,9 @@ int main(void)
 {
 	
 	TIMERS_InitTimer0();
- 2ba:	0e 94 4a 02 	call	0x494	; 0x494 <TIMERS_InitTimer0>
+ 2ba:	0e 94 6e 02 	call	0x4dc	; 0x4dc <TIMERS_InitTimer0>
 	TIMERS_InitTimer1();
- 2be:	0e 94 7c 02 	call	0x4f8	; 0x4f8 <TIMERS_InitTimer1>
+ 2be:	0e 94 a0 02 	call	0x540	; 0x540 <TIMERS_InitTimer1>
 	
 	LEDS_init();
  2c2:	0e 94 bf 00 	call	0x17e	; 0x17e <LEDS_init>
@@ -442,26 +442,27 @@ int main(void)
  2ce:	80 e0       	ldi	r24, 0x00	; 0
  2d0:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <LEDS_setFinalRGB>
 	
+	PWM_soft_init();
+ 2d4:	0e 94 64 02 	call	0x4c8	; 0x4c8 <PWM_soft_init>
+	
 	//Test PB4 como salida y un 1 en la misma
 	DDRB |= (1 << PORTB4);
- 2d4:	84 b1       	in	r24, 0x04	; 4
- 2d6:	80 61       	ori	r24, 0x10	; 16
- 2d8:	84 b9       	out	0x04, r24	; 4
+ 2d8:	84 b1       	in	r24, 0x04	; 4
+ 2da:	80 61       	ori	r24, 0x10	; 16
+ 2dc:	84 b9       	out	0x04, r24	; 4
 	PORTB &= ~(1 << PORTB4);
- 2da:	85 b1       	in	r24, 0x05	; 5
- 2dc:	8f 7e       	andi	r24, 0xEF	; 239
- 2de:	85 b9       	out	0x05, r24	; 5
+ 2de:	85 b1       	in	r24, 0x05	; 5
+ 2e0:	8f 7e       	andi	r24, 0xEF	; 239
+ 2e2:	85 b9       	out	0x05, r24	; 5
 	
 	sei();
- 2e0:	78 94       	sei
+ 2e4:	78 94       	sei
 	
     while(1)
     {
 		sEOS_Dispatch_Tasks();
- 2e2:	0e 94 23 02 	call	0x446	; 0x446 <sEOS_Dispatch_Tasks>
-		sEOS_Go_To_Sleep();
- 2e6:	0e 94 3f 02 	call	0x47e	; 0x47e <sEOS_Go_To_Sleep>
- 2ea:	fb cf       	rjmp	.-10     	; 0x2e2 <main+0x28>
+ 2e6:	0e 94 23 02 	call	0x446	; 0x446 <sEOS_Dispatch_Tasks>
+ 2ea:	fd cf       	rjmp	.-6      	; 0x2e6 <main+0x2c>
 
 000002ec <MEF_init>:
 static states state;
@@ -662,7 +663,7 @@ void sEOS_Dispatch_Tasks(){
  456:	08 95       	ret
 
 00000458 <sEOS_SCH_Tasks>:
-		*/
+	}
 }
 
 void sEOS_SCH_Tasks(){
@@ -681,125 +682,169 @@ void sEOS_SCH_Tasks(){
 		counter = 0;
  474:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
  478:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
- 47c:	08 95       	ret
+	}
+	PWM_soft_Update();
+ 47c:	0e 94 41 02 	call	0x482	; 0x482 <PWM_soft_Update>
+ 480:	08 95       	ret
 
-0000047e <sEOS_Go_To_Sleep>:
-//Pone en modo ahorro el micro
-void sEOS_Go_To_Sleep(){
-	
-	// Setea el sleep mode a "idle". Este modo permite a la CPU dormir
-	// dejando los perifericos (Como Timers y UART) corriendo
-	set_sleep_mode(SLEEP_MODE_IDLE);
- 47e:	83 b7       	in	r24, 0x33	; 51
- 480:	81 7f       	andi	r24, 0xF1	; 241
- 482:	83 bf       	out	0x33, r24	; 51
+00000482 <PWM_soft_Update>:
 
-	// Habilita sleep mode
-	sleep_enable();
- 484:	83 b7       	in	r24, 0x33	; 51
- 486:	81 60       	ori	r24, 0x01	; 1
- 488:	83 bf       	out	0x33, r24	; 51
+static uint8_t PWM_DELTA;
 
-	// Duerme al cpu
-	sleep_cpu();
- 48a:	88 95       	sleep
+void PWM_soft_Update(void){
+	static uint16_t PWM_position = 0;
+	if (++PWM_position >= PWM_PERIOD){
+ 482:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <PWM_position.1970>
+ 486:	90 91 2b 01 	lds	r25, 0x012B	; 0x80012b <PWM_position.1970+0x1>
+ 48a:	01 96       	adiw	r24, 0x01	; 1
+ 48c:	90 93 2b 01 	sts	0x012B, r25	; 0x80012b <PWM_position.1970+0x1>
+ 490:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <PWM_position.1970>
+ 494:	8f 3f       	cpi	r24, 0xFF	; 255
+ 496:	91 05       	cpc	r25, r1
+ 498:	49 f0       	breq	.+18     	; 0x4ac <PWM_soft_Update+0x2a>
+ 49a:	40 f0       	brcs	.+16     	; 0x4ac <PWM_soft_Update+0x2a>
+		PWM_position = 0;
+ 49c:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <PWM_position.1970+0x1>
+ 4a0:	10 92 2a 01 	sts	0x012A, r1	; 0x80012a <PWM_position.1970>
+		PWM_OFF;
+ 4a4:	85 b1       	in	r24, 0x05	; 5
+ 4a6:	8f 7d       	andi	r24, 0xDF	; 223
+ 4a8:	85 b9       	out	0x05, r24	; 5
+ 4aa:	08 95       	ret
+	}
+	else{
+		if (PWM_position < PWM_DELTA){
+ 4ac:	20 91 2c 01 	lds	r18, 0x012C	; 0x80012c <PWM_DELTA>
+ 4b0:	30 e0       	ldi	r19, 0x00	; 0
+ 4b2:	82 17       	cp	r24, r18
+ 4b4:	93 07       	cpc	r25, r19
+ 4b6:	20 f4       	brcc	.+8      	; 0x4c0 <PWM_soft_Update+0x3e>
+			PWM_OFF;
+ 4b8:	85 b1       	in	r24, 0x05	; 5
+ 4ba:	8f 7d       	andi	r24, 0xDF	; 223
+ 4bc:	85 b9       	out	0x05, r24	; 5
+ 4be:	08 95       	ret
+		}
+		else{
+			PWM_ON;
+ 4c0:	85 b1       	in	r24, 0x05	; 5
+ 4c2:	80 62       	ori	r24, 0x20	; 32
+ 4c4:	85 b9       	out	0x05, r24	; 5
+ 4c6:	08 95       	ret
 
-	// Deshabilita sleep mode
-	sleep_disable();
- 48c:	83 b7       	in	r24, 0x33	; 51
- 48e:	8e 7f       	andi	r24, 0xFE	; 254
- 490:	83 bf       	out	0x33, r24	; 51
- 492:	08 95       	ret
+000004c8 <PWM_soft_init>:
+		}
+	}
+}
 
-00000494 <TIMERS_InitTimer0>:
-#include "timers.h"
+void PWM_soft_init(){
+	PWM_START;
+ 4c8:	84 b1       	in	r24, 0x04	; 4
+ 4ca:	80 62       	ori	r24, 0x20	; 32
+ 4cc:	84 b9       	out	0x04, r24	; 4
+	PWM_OFF;
+ 4ce:	85 b1       	in	r24, 0x05	; 5
+ 4d0:	8f 7d       	andi	r24, 0xDF	; 223
+ 4d2:	85 b9       	out	0x05, r24	; 5
+	PWM_DELTA = 1;
+ 4d4:	81 e0       	ldi	r24, 0x01	; 1
+ 4d6:	80 93 2c 01 	sts	0x012C, r24	; 0x80012c <PWM_DELTA>
+ 4da:	08 95       	ret
+
+000004dc <TIMERS_InitTimer0>:
 #include "../sEOS/sEOS.h"
 
 void TIMERS_InitTimer0(){
+	
 	// Interrupcion cada 1ms
 	TCCR0A |= (1 << WGM01);
- 494:	84 b5       	in	r24, 0x24	; 36
- 496:	82 60       	ori	r24, 0x02	; 2
- 498:	84 bd       	out	0x24, r24	; 36
+ 4dc:	84 b5       	in	r24, 0x24	; 36
+ 4de:	82 60       	ori	r24, 0x02	; 2
+ 4e0:	84 bd       	out	0x24, r24	; 36
 	TCCR0B |= (1 << CS01) | (1 << CS00);  // prescaler 64
- 49a:	85 b5       	in	r24, 0x25	; 37
- 49c:	83 60       	ori	r24, 0x03	; 3
- 49e:	85 bd       	out	0x25, r24	; 37
-	TIMSK0 |= (1 << OCIE0A);
- 4a0:	ee e6       	ldi	r30, 0x6E	; 110
- 4a2:	f0 e0       	ldi	r31, 0x00	; 0
- 4a4:	80 81       	ld	r24, Z
- 4a6:	82 60       	ori	r24, 0x02	; 2
- 4a8:	80 83       	st	Z, r24
-	
+ 4e2:	85 b5       	in	r24, 0x25	; 37
+ 4e4:	83 60       	ori	r24, 0x03	; 3
+ 4e6:	85 bd       	out	0x25, r24	; 37
 	OCR0A = 249;
- 4aa:	89 ef       	ldi	r24, 0xF9	; 249
- 4ac:	87 bd       	out	0x27, r24	; 39
- 4ae:	08 95       	ret
+ 4e8:	89 ef       	ldi	r24, 0xF9	; 249
+ 4ea:	87 bd       	out	0x27, r24	; 39
+	// Interrupcion cada 1/256
+	TCCR0A |= (1 << WGM01); // Modo CTC
+	TCCR0B |= (1 << CS00);
+	OCR0A = 62;
+	*/
+	TIMSK0 |= (1 << OCIE0A);
+ 4ec:	ee e6       	ldi	r30, 0x6E	; 110
+ 4ee:	f0 e0       	ldi	r31, 0x00	; 0
+ 4f0:	80 81       	ld	r24, Z
+ 4f2:	82 60       	ori	r24, 0x02	; 2
+ 4f4:	80 83       	st	Z, r24
+ 4f6:	08 95       	ret
 
-000004b0 <__vector_14>:
+000004f8 <__vector_14>:
+	
 }
 
 ISR(TIMER0_COMPA_vect){
- 4b0:	1f 92       	push	r1
- 4b2:	0f 92       	push	r0
- 4b4:	0f b6       	in	r0, 0x3f	; 63
- 4b6:	0f 92       	push	r0
- 4b8:	11 24       	eor	r1, r1
- 4ba:	2f 93       	push	r18
- 4bc:	3f 93       	push	r19
- 4be:	4f 93       	push	r20
- 4c0:	5f 93       	push	r21
- 4c2:	6f 93       	push	r22
- 4c4:	7f 93       	push	r23
- 4c6:	8f 93       	push	r24
- 4c8:	9f 93       	push	r25
- 4ca:	af 93       	push	r26
- 4cc:	bf 93       	push	r27
- 4ce:	ef 93       	push	r30
- 4d0:	ff 93       	push	r31
+ 4f8:	1f 92       	push	r1
+ 4fa:	0f 92       	push	r0
+ 4fc:	0f b6       	in	r0, 0x3f	; 63
+ 4fe:	0f 92       	push	r0
+ 500:	11 24       	eor	r1, r1
+ 502:	2f 93       	push	r18
+ 504:	3f 93       	push	r19
+ 506:	4f 93       	push	r20
+ 508:	5f 93       	push	r21
+ 50a:	6f 93       	push	r22
+ 50c:	7f 93       	push	r23
+ 50e:	8f 93       	push	r24
+ 510:	9f 93       	push	r25
+ 512:	af 93       	push	r26
+ 514:	bf 93       	push	r27
+ 516:	ef 93       	push	r30
+ 518:	ff 93       	push	r31
 	sEOS_SCH_Tasks();
- 4d2:	0e 94 2c 02 	call	0x458	; 0x458 <sEOS_SCH_Tasks>
- 4d6:	ff 91       	pop	r31
- 4d8:	ef 91       	pop	r30
- 4da:	bf 91       	pop	r27
- 4dc:	af 91       	pop	r26
- 4de:	9f 91       	pop	r25
- 4e0:	8f 91       	pop	r24
- 4e2:	7f 91       	pop	r23
- 4e4:	6f 91       	pop	r22
- 4e6:	5f 91       	pop	r21
- 4e8:	4f 91       	pop	r20
- 4ea:	3f 91       	pop	r19
- 4ec:	2f 91       	pop	r18
- 4ee:	0f 90       	pop	r0
- 4f0:	0f be       	out	0x3f, r0	; 63
- 4f2:	0f 90       	pop	r0
- 4f4:	1f 90       	pop	r1
- 4f6:	18 95       	reti
+ 51a:	0e 94 2c 02 	call	0x458	; 0x458 <sEOS_SCH_Tasks>
+ 51e:	ff 91       	pop	r31
+ 520:	ef 91       	pop	r30
+ 522:	bf 91       	pop	r27
+ 524:	af 91       	pop	r26
+ 526:	9f 91       	pop	r25
+ 528:	8f 91       	pop	r24
+ 52a:	7f 91       	pop	r23
+ 52c:	6f 91       	pop	r22
+ 52e:	5f 91       	pop	r21
+ 530:	4f 91       	pop	r20
+ 532:	3f 91       	pop	r19
+ 534:	2f 91       	pop	r18
+ 536:	0f 90       	pop	r0
+ 538:	0f be       	out	0x3f, r0	; 63
+ 53a:	0f 90       	pop	r0
+ 53c:	1f 90       	pop	r1
+ 53e:	18 95       	reti
 
-000004f8 <TIMERS_InitTimer1>:
+00000540 <TIMERS_InitTimer1>:
 // Init timer
 void TIMERS_InitTimer1(){
 	//Modo Fast PWM con top = 0x00FF (Modo 5)
 	//Prescaler en 256
-	//Modo NO invertido (set on count reset)
+	//Modo invertido (clear on count reset)
 	TCCR1A |= (1 << WGM10) | (1<< COM1A1) | (1<< COM1B1);
- 4f8:	e0 e8       	ldi	r30, 0x80	; 128
- 4fa:	f0 e0       	ldi	r31, 0x00	; 0
- 4fc:	80 81       	ld	r24, Z
- 4fe:	81 6a       	ori	r24, 0xA1	; 161
- 500:	80 83       	st	Z, r24
-	TCCR1B |= (1 << WGM12) | (1 << CS12);// | (1 << CS10) ;
- 502:	e1 e8       	ldi	r30, 0x81	; 129
- 504:	f0 e0       	ldi	r31, 0x00	; 0
- 506:	80 81       	ld	r24, Z
- 508:	8c 60       	ori	r24, 0x0C	; 12
- 50a:	80 83       	st	Z, r24
- 50c:	08 95       	ret
+ 540:	e0 e8       	ldi	r30, 0x80	; 128
+ 542:	f0 e0       	ldi	r31, 0x00	; 0
+ 544:	80 81       	ld	r24, Z
+ 546:	81 6a       	ori	r24, 0xA1	; 161
+ 548:	80 83       	st	Z, r24
+	TCCR1B |= (1 << WGM12) | (1 << CS12) | (1 << CS10);// | (1 << CS10) ;
+ 54a:	e1 e8       	ldi	r30, 0x81	; 129
+ 54c:	f0 e0       	ldi	r31, 0x00	; 0
+ 54e:	80 81       	ld	r24, Z
+ 550:	8d 60       	ori	r24, 0x0D	; 13
+ 552:	80 83       	st	Z, r24
+ 554:	08 95       	ret
 
-0000050e <_exit>:
- 50e:	f8 94       	cli
+00000556 <_exit>:
+ 556:	f8 94       	cli
 
-00000510 <__stop_program>:
- 510:	ff cf       	rjmp	.-2      	; 0x510 <__stop_program>
+00000558 <__stop_program>:
+ 558:	ff cf       	rjmp	.-2      	; 0x558 <__stop_program>

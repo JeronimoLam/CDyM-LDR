@@ -17,7 +17,9 @@ main.d main.o: .././main.c \
  d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sleep.h \
  .././sEOS/../Leds/led.h .././sEOS/../MEF/MEF.h \
- .././sEOS/../MEF/../Leds/led.h .././MEF/MEF.h
+ .././sEOS/../MEF/../Leds/led.h .././sEOS/../SW_PWM/PWM.h \
+ d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
+ .././MEF/MEF.h .././SW_PWM/PWM.h
 
 d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -63,4 +65,10 @@ d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././sEOS/../MEF/../Leds/led.h:
 
+.././sEOS/../SW_PWM/PWM.h:
+
+d:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
+
 .././MEF/MEF.h:
+
+.././SW_PWM/PWM.h:

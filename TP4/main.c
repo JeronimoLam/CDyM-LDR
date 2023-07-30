@@ -6,6 +6,7 @@
 #include "Leds/led.h"
 #include "sEOS/sEOS.h"
 #include "MEF/MEF.h"
+#include "SW_PWM/PWM.h"
 
 
 int main(void)
@@ -18,6 +19,8 @@ int main(void)
 	MEF_init();
 	LEDS_setFinalRGB(0, 10, 200);
 	
+	PWM_soft_init();
+	
 	//Test PB4 como salida y un 1 en la misma
 	DDRB |= (1 << PORTB4);
 	PORTB &= ~(1 << PORTB4);
@@ -27,7 +30,7 @@ int main(void)
     while(1)
     {
 		sEOS_Dispatch_Tasks();
-		sEOS_Go_To_Sleep();
+		//sEOS_Go_To_Sleep();
     }
 }
 

@@ -5,6 +5,7 @@
 	#include <avr/sleep.h>
 	#include "../Leds/led.h"
 	#include "../MEF/MEF.h"
+	#include "../SW_PWM/PWM.h"
 
 	void sEOS_Dispatch_Tasks();
 	void sEOS_Go_To_Sleep();

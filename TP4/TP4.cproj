@@ -154,6 +154,12 @@
     <Compile Include="sEOS\sEOS.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="SW_PWM\PWM.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SW_PWM\PWM.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Timers\timer0.c">
       <SubType>compile</SubType>
     </Compile>
@@ -167,6 +173,7 @@
   <ItemGroup>
     <Folder Include="Leds" />
     <Folder Include="MEF" />
+    <Folder Include="SW_PWM" />
     <Folder Include="sEOS" />
     <Folder Include="Timers" />
   </ItemGroup>

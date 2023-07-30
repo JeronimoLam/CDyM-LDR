@@ -12,30 +12,6 @@ void sEOS_Dispatch_Tasks(){
 		MEF_Update();
 		FLAG_MEF = 0;	
 	}
-	// Actualiza la MEF cada 50ms
-	/*if (FLAG_MEF) {
-		PORTB ^= (1<<PORTB4);
-		counter2++;
-		if(counter2 == 10){
-			counter2 = 0;
-			//PORTB ^= (1<<PORTB4);
-		
-		}
-		if (counter  < 500){
-			counter++;
-		}
-		if (counter % 50 == 0){
-			LEDS_incrementBlue(LEDS_getFinalBlue()/10); //Al valor del led actual se le suma 1/10 del total
-			LEDS_incrementGreen(LEDS_getFinalGreen()/10);
-		}
-		if(counter == 500){
-			LEDS_setBlue(LEDS_getFinalBlue());
-			LEDS_setGreen(LEDS_getFinalGreen());
-			counter = 0;
-		}
-		//MEF_Buttons_Update(); // Actualizamos la MEF para el antirebote y las colisiones multiples
-		//MEF_Update(); // Actualizacion de la MEF principal de estados
-		*/
 }
 
 void sEOS_SCH_Tasks(){
@@ -44,6 +20,7 @@ void sEOS_SCH_Tasks(){
 		FLAG_MEF = 1;
 		counter = 0;
 	}
+	PWM_soft_Update();
 }
 
 
