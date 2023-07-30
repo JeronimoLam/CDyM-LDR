@@ -6,7 +6,7 @@
 static volatile uint16_t counter_MEF = 780;
 static volatile uint8_t FLAG_MEF = 0;
 
-static volatile uint16_t counter_LDR = 0;
+static volatile uint16_t counter_LDR = 3;
 static volatile uint8_t FLAG_LDR = 0;
 
 
@@ -27,10 +27,10 @@ void sEOS_SCH_Tasks(){
 		FLAG_MEF = 1;
 		counter_MEF = 0;
 	}
-	if (++counter_LDR == 2) {
+/*	if (++counter_LDR == 5) {
 		FLAG_LDR = 1;
 		counter_LDR = 0;
-	}
+	} DESCOMENTAR PARA NO LDR POR TIME TRIGGERED*/ 
 	PWM_soft_Update();
 }
 

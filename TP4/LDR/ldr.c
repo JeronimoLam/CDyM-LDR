@@ -30,7 +30,7 @@ void LDR_Update(){
 		ADCSRA |= (1<<ADSC);//start conversion
 		is_converting = 1;
 	}
-	if ((ADCSRA&(1<<ADIF))==0) {//wait for conversion to finish
+	if ((ADCSRA&(1<<ADIF))==1) {//wait for conversion to finish
 		ADCSRA |= (1<<ADIF); //borrar flag
 		result = (uint16_t) ADC;
 		is_converting = 0;
@@ -38,5 +38,10 @@ void LDR_Update(){
 }
 
 uint16_t LDR_get_value(){
+	ADCSRA |= (1<<ADSC);//start conversion
+	while((ADCSRA&(1<<ADIF))==0);//wait for conversion to finish
+	ADCSRA |= (1<<ADIF); //borrar flag
+	result = (uint16_t) ADC;
+	// para no polling comentar las 4 lineas de arriba
 	return result;
 }

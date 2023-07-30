@@ -11,7 +11,7 @@ void MEF_init(){
 	state = OFF;
 	stateCount = 0;
 
-	pendiente = (10-100) / (MIN_SUP_LDR - MAX_INF_LDR);
+	pendiente = (40-100) / (MIN_SUP_LDR - MAX_INF_LDR);
 	desplazamiento = 100 + round(pendiente * MAX_INF_LDR);
 }
 
@@ -24,7 +24,7 @@ void  update_timeOff(){
 	}
 	// Caso en el que Tparepadeo = 2seg (luz ambiente o mas)
 	else if (LDR_value > MIN_SUP_LDR){
-		timeOff = 10;
+		timeOff = 40;
 	}
 	else {
 		timeOff = desplazamiento - round(pendiente*LDR_value); // Parte de la recta con pendiente m negativa
