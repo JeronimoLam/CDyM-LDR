@@ -5,9 +5,8 @@ uint8_t is_converting = 0;
 
 void LDR_config(){
 	DIDR0= 0x01; //Digital Input Disable (opcional)
-	ADCSRA= 0x87;//make ADC enable and select ck/128
-	ADMUX= 0x00;// Vref=AVCC, right-justified, ADC0 pin
-	ADMUX |= (1<<REFS0);
+	ADCSRA |= (1<<ADEN) | (1<<ADPS2) | (1<<ADPS1) | (1<<ADPS0); //make ADC enable and select ck/128
+	ADMUX |= (1<<REFS0) | (1<<MUX1) | (1<<MUX0);   // Vref=AVCC, right-justified, ADC3 pin
 }
 
 uint16_t LDR_get_value(){
