@@ -3,10 +3,6 @@
 static volatile uint16_t counter_MEF = 780;
 static volatile uint8_t FLAG_MEF = 0;
 
-static volatile uint16_t counter_LDR = 3;
-static volatile uint8_t FLAG_LDR = 0;
-
-
 void sEOS_Dispatch_Tasks(){
 	if(FLAG_MEF){
 		MEF_Update();
