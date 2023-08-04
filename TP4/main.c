@@ -18,7 +18,7 @@ int main(void)
 	
 	LEDS_init();
 	MEF_init();
-	LEDS_setFinalRGB(204, 255, 229);
+	LEDS_setFinalRGB(200, 200, 128);
 	
 	LDR_config();
 	

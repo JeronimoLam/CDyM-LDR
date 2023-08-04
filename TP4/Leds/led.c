@@ -1,5 +1,5 @@
 #include "led.h"
-#define STEPS 10
+#define STEPS 100
 
 static uint8_t final_red = 0;
 static uint8_t final_green = 0;
@@ -119,15 +119,15 @@ void LEDS_incrementBlue(uint16_t value){
 }
 
 void LEDS_decrementRed(uint16_t value){
-	LEDS_setRed(LEDS_getRed() - red_increments[9 - value]);
+	LEDS_setRed(LEDS_getRed() - red_increments[STEPS - 1 - value]);
 }
 
 void LEDS_decrementGreen(uint16_t value){
-	LEDS_setGreen(LEDS_getGreen() - green_increments[9 - value]);
+	LEDS_setGreen(LEDS_getGreen() - green_increments[STEPS - 1 - value]);
 }
 
 void LEDS_decrementBlue(uint16_t value){
-	LEDS_setBlue(LEDS_getBlue() - blue_increments[9 - value]);
+	LEDS_setBlue(LEDS_getBlue() - blue_increments[STEPS - 1- value]);
 }
 
 

@@ -6,9 +6,9 @@
 	#include "../LDR/ldr.h"
 	
 	#define MIN_INF_LDR 0	// Valor minimo tapando con el dedo
-	#define MAX_INF_LDR 110	// Valor maximo tapando con el dedo
+	#define MAX_INF_LDR 50	// Valor maximo tapando con el dedo
 	
-	#define MIN_SUP_LDR 200 // Valor minimo en luz ambiente
+	#define MIN_SUP_LDR 300 // Valor minimo en luz ambiente
 	#define MAX_SUP_LDR 800	// Valor maximo alumbrando con el celular
 
 	void MEF_init();

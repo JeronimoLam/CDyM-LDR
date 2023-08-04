@@ -22,8 +22,8 @@ void sEOS_Dispatch_Tasks(){
 }
 
 void sEOS_SCH_Tasks(){
-	//Cada 50 ms pone el flag en 1
-	if (++counter_MEF == 781) {
+	//Cada 5 ms pone el flag en 1
+	if (++counter_MEF == 78) {
 		FLAG_MEF = 1;
 		counter_MEF = 0;
 	}

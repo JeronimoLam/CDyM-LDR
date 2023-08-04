@@ -20,11 +20,11 @@ void  update_timeOff(){
 	
 	// Caso en el que Tparpadeo = 5seg (minima luz o menos)
 	if (LDR_value < MAX_INF_LDR){
-		timeOff = 100;
+		timeOff = 1000;
 	}
 	// Caso en el que Tparepadeo = 2seg (luz ambiente o mas)
 	else if (LDR_value > MIN_SUP_LDR){
-		timeOff = 10;
+		timeOff = 100;
 	}
 	else {
 		timeOff = desplazamiento - round(pendiente*LDR_value); // Parte de la recta con pendiente m negativa
@@ -56,7 +56,7 @@ void MEF_Update(){
 			LEDS_incrementGreen(stateCount - 1);
 			LEDS_incrementBlue(stateCount - 1);
 			
-			if(stateCount == 10){
+			if(stateCount == 100){
 				state = ON;
 				stateCount = 0;
 			}
@@ -70,7 +70,7 @@ void MEF_Update(){
 			LEDS_setGreen(LEDS_getFinalGreen());
 			LEDS_setBlue(LEDS_getFinalBlue());
 			
-			if(stateCount == 20){
+			if(stateCount == 200){
 				state = FALLING;
 				stateCount = 0;
 			}
@@ -83,7 +83,7 @@ void MEF_Update(){
 			LEDS_decrementGreen(stateCount - 1);
 			LEDS_decrementBlue(stateCount - 1);
 			
-			if(stateCount == 10){
+			if(stateCount == 100){
 				state = OFF;
 				stateCount = 0;
 			}
