@@ -11,8 +11,8 @@ void MEF_init(){
 	state = OFF;
 	stateCount = 0;
 
-	pendiente = (10-100) / (MIN_SUP_LDR - MAX_INF_LDR);
-	desplazamiento = 100 + round(pendiente * MAX_INF_LDR);
+	pendiente = (400-1000) / (MIN_SUP_LDR - MAX_INF_LDR);
+	desplazamiento = 1000 + round(pendiente * MAX_INF_LDR);
 }
 
 void  update_timeOff(){
@@ -24,7 +24,7 @@ void  update_timeOff(){
 	}
 	// Caso en el que Tparepadeo = 2seg (luz ambiente o mas)
 	else if (LDR_value > MIN_SUP_LDR){
-		timeOff = 100;
+		timeOff = 400;
 	}
 	else {
 		timeOff = desplazamiento - round(pendiente*LDR_value); // Parte de la recta con pendiente m negativa
@@ -36,7 +36,6 @@ void MEF_Update(){
 	
 	switch (state){
 		case OFF:
-			PORTB |= (1<<PORTB4);
 			
 			LEDS_setRed(0);
 			LEDS_setGreen(0);
@@ -50,7 +49,6 @@ void MEF_Update(){
 			break;
 			
 		case RAISING:
-			PORTB |= (1<<PORTB4);
 			
 			LEDS_incrementRed(stateCount - 1);
 			LEDS_incrementGreen(stateCount - 1);
@@ -63,7 +61,6 @@ void MEF_Update(){
 			break;
 			
 		case ON:
-			PORTB &= ~(1<<PORTB4);
 
 			
 			LEDS_setRed(LEDS_getFinalRed());
@@ -77,7 +74,6 @@ void MEF_Update(){
 			break;
 			
 		case FALLING:
-			PORTB |= (1<<PORTB4);
 			
 			LEDS_decrementRed(stateCount - 1);
 			LEDS_decrementGreen(stateCount - 1);
